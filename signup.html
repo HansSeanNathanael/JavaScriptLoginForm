@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SignUp Page</title>
+    </head>
+    <body align="center">
+        <h1>CREATE YOUR ACCOUNT</h1>
+        <table cellspacing="2" align="center" cellpadding="8" border="0">
+            <tr>
+                <td align="left">Name</td>
+                <td><input type="text" placeholder="Enter your name" id="n1"></td>
+            </tr>
+            <tr>
+                <td align="left">Email</td>
+                <td><input type="text" placeholder="Enter your email here" id="e1"></td>
+            </tr>
+            <tr>
+                <td align="left">Set Password</td>
+                <td><input type="password" placeholder="Set your password" id="p1"></td>
+            </tr>
+            <tr>
+                <td align="left">Confirm Password</td>
+                <td><input type="password" placeholder="Confirm your password" id="p2"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Create" onclick="create_account()"></td>
+            </tr>
+        </table>
+
+        <script type="text/javascript">
+            function create_account() {
+                let name = document.getElementById("n1").value;
+                let email = document.getElementById("e1").value;
+                let password = document.getElementById("p1").value;
+                let passwordConfirmation = document.getElementById("p2").value;
+
+                let lettersRegex = /^[A-Za-z]+$/;
+                //let emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2, 4})+$/;
+                let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+                if (name == '' || email == '' || password == '' || passwordConfirmation == '') {
+                    alert("Enter each details correctly!");
+                }
+                else if (!lettersRegex.test(name)) {
+                    alert("Name must alphabetical");
+                }
+                else if (!emailRegex.test(email)) {
+                    alert("Invalid email format, please enter valid email");
+                }
+                else if (password != passwordConfirmation) {
+                    alert("Pasword didn't match");
+                }
+                else if (password.length > 12) {
+                    alert("Password maximum length is 12 letters");
+                }
+                else if (password.length < 6) {
+                    alert("Password minimum length is 6 letters");
+                }
+                else {
+                    alert("Your account has been created successfully... Redirecting to JavaTpoint.com");
+                    window.location = "htps://www.javatpoint.com/";
+                }
+            }
+        </script>
+    </body>
+</html>
